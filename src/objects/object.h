@@ -7,9 +7,8 @@
  * @brief
  * Klasa bazowa dla obiektów w grze.
  */
-class Object
-{
-public:
+class Object {
+  public:
     /**
      * Tworzenie obiektu w położeniu (0, 0).
      */
@@ -27,7 +26,7 @@ public:
      * @param y - pozycja początkowa pionowa
      * @param sprite - animacja obiektu danego typu
      */
-    Object(double x, double y, const SpriteData* sprite);
+    Object(double x, double y, const SpriteData *sprite);
     virtual ~Object();
 
     /**
@@ -69,7 +68,7 @@ public:
      */
     double pos_y;
 
-protected:
+  protected:
     /**
      * Funkcja zwraca prostokąt przesunięty o wielokrotności rozmiaru prostokąta rect.
      * @param rect - prostokąt bazowy
@@ -82,7 +81,7 @@ protected:
     /**
      * Animacja odpowiadająca danemu typowi obiektu.
      */
-    const SpriteData* m_sprite;
+    const SpriteData *m_sprite;
     /**
      * Czas wyświetlania obecnej klatki animacji.
      */
@@ -99,6 +98,6 @@ protected:
  * @param rect2
  * @return część wspólną, jeśli rect1 i rect2 nie mają części wspólnej prostokąt wyjściowy będzie miał ujemne wymiary
  */
-SDL_Rect intersectRect(SDL_Rect* rect1, SDL_Rect* rect2);
+SDL_Rect intersectRect(SDL_Rect *rect1, SDL_Rect *rect2);
 
 #endif // OBJECT_H

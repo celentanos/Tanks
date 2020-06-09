@@ -6,9 +6,8 @@
 /**
  * @brief Klasa zajmująca się pociskami wystrzalanymi przez czołgi.
  */
-class Bullet : public Object
-{
-public:
+class Bullet : public Object {
+  public:
     /**
      * Tworzenie pocisku w położeniu (0, 0).
      */
@@ -29,7 +28,7 @@ public:
      * Włączenie animacji wybuchu pocisku.
      */
     void destroy();
-    
+
     /**
      * Prędkość poruszania się pocisku.
      */

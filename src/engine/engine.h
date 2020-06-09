@@ -7,15 +7,14 @@
 /**
  * @brief Klasa łączy elementy związane z działaniem programu.
  */
-class Engine
-{
-public:
+class Engine {
+  public:
     Engine();
 
     /**
      * @return statyczną instancję obiektu @a Engine
      */
-    static Engine& getEngine(); //silnik może być dostępny w każdym module korzystając jedynie z przestrzeni nazw a nie wskaźnika
+    static Engine &getEngine(); // silnik może być dostępny w każdym module korzystając jedynie z przestrzeni nazw a nie wskaźnika
     /**
      * Funkcja zamienia podaną wartość liczbową na tekst.
      * @param num - liczba całkowita
@@ -34,14 +33,15 @@ public:
     /**
      * @return wskaźnik na obiekt Renderer pozwalający rysować na ekranie
      */
-    Renderer* getRenderer() const;
+    Renderer *getRenderer() const;
     /**
      * @return wsaźnik na obiekt SpriteConfig przechowujący informacjie o teksturach
      */
-    SpriteConfig* getSpriteConfig() const;
-private:
-    Renderer* m_renderer;
-    SpriteConfig* m_sprite_config;
+    SpriteConfig *getSpriteConfig() const;
+
+  private:
+    Renderer *    m_renderer;
+    SpriteConfig *m_sprite_config;
 };
 
 #endif // ENGINE_H

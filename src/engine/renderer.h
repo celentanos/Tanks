@@ -9,16 +9,15 @@
  * @brief
  * Klasa odpowiada za rysowanie obiektów na ekranie.
  */
-class Renderer
-{
-public:
+class Renderer {
+  public:
     Renderer();
     ~Renderer();
     /**
      * Wczytanie tekstury z pliku oraz stworzenie renderera związanego z oknem aplikacji.
      * @param window - wskaźnik na obiekt zawartości okna aplikacji
      */
-    void loadTexture(SDL_Window* window);
+    void loadTexture(SDL_Window *window);
     /**
      * Wczytwanie czcionki w trzech różnych rozmiarach.
      */
@@ -51,40 +50,40 @@ public:
      * @param text_color - kolory rysowanego tekst
      * @param font_size - numer czcionki za pomocą, której będzi rysoweny tekst; dostępne trzy wartośc: 1, 2, 3
      */
-    void drawText(const SDL_Point* start, std::string text, SDL_Color text_color, int font_size = 1);
+    void drawText(const SDL_Point *start, std::string text, SDL_Color text_color, int font_size = 1);
     /**
      * Funkcja rysująca prostokątk w buforze okna.
      * @param rect - położneie prostokątku na planszy
      * @param rect_color - kolor prostokątku
      * @param fill - zmienna mówiącza czy prostokąt ma być zamalowany
      */
-    void drawRect(const SDL_Rect* rect, SDL_Color rect_color, bool fill = false);
+    void drawRect(const SDL_Rect *rect, SDL_Color rect_color, bool fill = false);
 
-private:
+  private:
     /**
      * Wskaźnik na obiekt związany z buforem okna.
      */
-    SDL_Renderer* m_renderer;
+    SDL_Renderer *m_renderer;
     /**
      * Wskaźnik na teksturę zawierającą wszystkie widoczne elementy gry.
      */
-    SDL_Texture* m_texture;
+    SDL_Texture *m_texture;
     /**
      * Wskaźnik na teksturę pomocniczą przy rysowaniu tekstu na ekranie.
      */
-    SDL_Texture* m_text_texture;
+    SDL_Texture *m_text_texture;
     /**
      * Czcionka o rozmiarze 28.
      */
-    TTF_Font* m_font1;
+    TTF_Font *m_font1;
     /**
      * Czcionka o rozmiarze 14.
      */
-    TTF_Font* m_font2;
+    TTF_Font *m_font2;
     /**
      * Czcionka o rozmiarze 10.
      */
-    TTF_Font* m_font3;
+    TTF_Font *m_font3;
 };
 
 #endif // RENDERER_H

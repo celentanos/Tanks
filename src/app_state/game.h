@@ -1,22 +1,22 @@
 #ifndef GAME_H
 #define GAME_H
-#include "appstate.h"
+#include "../objects/bonus.h"
+#include "../objects/brick.h"
+#include "../objects/bullet.h"
+#include "../objects/eagle.h"
+#include "../objects/enemy.h"
 #include "../objects/object.h"
 #include "../objects/player.h"
-#include "../objects/enemy.h"
-#include "../objects/bullet.h"
-#include "../objects/brick.h"
-#include "../objects/eagle.h"
-#include "../objects/bonus.h"
-#include <vector>
+#include "appstate.h"
+
 #include <string>
+#include <vector>
 
 /**
  * @brief Klasa odpowiada za ruch wszytkich czołgów oraz interaakcje między czołgami oraz między czołgami a innymi obiektami na mapie
  */
-class Game : public AppState
-{
-public:
+class Game : public AppState {
+  public:
     /**
      * Domyślny konstruktor - umożliwia grę dla jednego gracza
      */
@@ -33,7 +33,7 @@ public:
      * @param players - kontener z graczami
      * @param previous_level - zmienna przechowująca numer poprzedniego poziomu
      */
-    Game(std::vector<Player*> players, int previous_level);
+    Game(std::vector<Player *> players, int previous_level);
 
     ~Game();
     /**
@@ -62,14 +62,14 @@ public:
      * @li T - pokazanie ścieżek do celów wrogich czołgów
      * @param ev - wskaźnik na unię SDL_Event przechowującą typ i parametry różnych zdarzeń, w tym zdarzeń klawiatury
      */
-    void eventProcess(SDL_Event* ev);
+    void eventProcess(SDL_Event *ev);
     /**
      * Przejście do następnyego stanu.
      * @return wskaźnik na obiekty klasy @a Scores jeżeli gracz przeszedł rundę lub przegrał. Jeżeli gracz wcisną Esc funkcja zwraca wskaźnik na obiekt @a Menu.
      */
-    AppState* nextState();
+    AppState *nextState();
 
-private:
+  private:
     /**
      * Wczytanie mapy poziomu z pliku
      * @param path - ścieżka do pliku mapy
@@ -102,44 +102,44 @@ private:
      * @param tank - czółg, dla którego sprawdzamy kolizje
      * @param dt - ostatnia zmiana czasu, przy założeniu niewielkich zmian w kolejnych krokach czasowych możemy przewidywać kolejne położenie czołgu i odpowiednio reagować.
      */
-    void checkCollisionTankWithLevel(Tank* tank, Uint32 dt);
+    void checkCollisionTankWithLevel(Tank *tank, Uint32 dt);
     /**
      * Sprawdzenie czy nie występuje kolizja między badanymi czołgami, jeśli tak oba są zatrzymywane.
      * @param tank1
      * @param tank2
      * @param dt
      */
-    void checkCollisionTwoTanks(Tank* tank1, Tank* tank2, Uint32 dt);
+    void checkCollisionTwoTanks(Tank *tank1, Tank *tank2, Uint32 dt);
     /**
      * Sprawdznie czy wybrany pocisk nie koliduje z jakimś elementem mapy (woda i lód są pomijane). Jeżeli tak pocisk i obiekt są niszczone.
      * Jeśli trafiono orzełka to następuje przegrana.
      * @param bullet - pocisk
      */
-    void checkCollisionBulletWithLevel(Bullet* bullet);
+    void checkCollisionBulletWithLevel(Bullet *bullet);
     /**
      * Sprawdzenie kolizji pocisku z krzewami (krzakami) na mapie. Niszczenie krzaków i pocisku nastepuje wtedy, gdy ma on zwiększone obrażenia.
      * @param bullet - pocisk
      * @see Bullet::increased_damage
      */
-    void checkCollisionBulletWithBush(Bullet* bullet);
+    void checkCollisionBulletWithBush(Bullet *bullet);
     /**
      * Sprawdzanie czy dany gracz trafił w wybranego przeciwnika. Jeśli tak gracz dostaje punkty a przeciwnik traci jeden poziom pancerza.
      * @param player - gracz
      * @param enemy - przeciwnik
      */
-    void checkCollisionPlayerBulletsWithEnemy(Player* player, Enemy* enemy);
+    void checkCollisionPlayerBulletsWithEnemy(Player *player, Enemy *enemy);
     /**
      * Sprawdzenie czy przeciwnik nie trafił pociskiem w gracza. Jeżeli tak to gracz traci jedno życie o ile nie miał osłonki.
      * @param enemy - przeciwnik
      * @param player - gracz
      */
-    void checkCollisionEnemyBulletsWithPlayer(Enemy* enemy, Player* player);
+    void checkCollisionEnemyBulletsWithPlayer(Enemy *enemy, Player *player);
     /**
      * Jeżeli dwa pociski się zderzą oba zostają niszczone.
      * @param bullet1
      * @param bullet2
      */
-    void checkCollisionTwoBullets(Bullet* bullet1, Bullet* bullet2);
+    void checkCollisionTwoBullets(Bullet *bullet1, Bullet *bullet2);
     /**
      * Sprawdzenie czy gracz nie wziął bonusu. Jeśli tak następuje odpowiednia reakcja:
      * @li Granat - widoczni wrogowie zostają zniszczeni
@@ -154,7 +154,7 @@ private:
      * @param player
      * @param bonus
      */
-    void checkCollisionPlayerWithBonus(Player* player, Bonus* bonus);
+    void checkCollisionPlayerWithBonus(Player *player, Bonus *bonus);
 
     /**
      * Liczaba kolumn siatki mapy.
@@ -167,32 +167,32 @@ private:
     /**
      * Przeszkody na mapie.
      */
-    std::vector< std::vector <Object*> > m_level;
+    std::vector<std::vector<Object *>> m_level;
     /**
      * Krzaki na mapie.
      */
-    std::vector<Object*> m_bushes;
+    std::vector<Object *> m_bushes;
 
     /**
      * Zbiór wrogów.
      */
-    std::vector<Enemy*> m_enemies;
+    std::vector<Enemy *> m_enemies;
     /**
      * Zbiór pozostałych graczy.
      */
-    std::vector<Player*> m_players;
+    std::vector<Player *> m_players;
     /**
      * Zbiór zabity graczy.
      */
-    std::vector<Player*> m_killed_players;
+    std::vector<Player *> m_killed_players;
     /**
      * Zbiór bonusów na mapie.
      */
-    std::vector<Bonus*> m_bonuses;
+    std::vector<Bonus *> m_bonuses;
     /**
      * Obiekt orzełka.
      */
-    Eagle* m_eagle;
+    Eagle *m_eagle;
 
     /**
      * Obecny numer poziomu.

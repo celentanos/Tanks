@@ -8,9 +8,8 @@
  * @brief
  * Klasa jest interfejsem, po którym dziedziczą klasy @a Game, @a Menu, @a Scores
  */
-class AppState
-{
-public:
+class AppState {
+  public:
     virtual ~AppState() {}
 
     /**
@@ -31,11 +30,11 @@ public:
      * Funkcja umożliwiająca obsługę zdarzeń wykrywanych przez bibliotekę SDL2.
      * @param ev - wskaźnik na unię SDL_Event przechowującą typ i parametry różnych zdarzeń
      */
-    virtual void eventProcess(SDL_Event* ev) = 0;
+    virtual void eventProcess(SDL_Event *ev) = 0;
     /**
      * Funkcja zwracającya następny stan po zakończeniu obecnego. Funkcję należy wywołać tylko wtedy, gdy funkcja @a finished zwróci wartość @a true.
      * @return następny stan gry
      */
-    virtual AppState* nextState() = 0;
+    virtual AppState *nextState() = 0;
 };
 #endif // APPSTATE_H

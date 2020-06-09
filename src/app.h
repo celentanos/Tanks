@@ -7,9 +7,8 @@
  * @brief
  * Klasa główna aplikacji. Jej działanie jest równoważne z działaniem aplikacji.
  */
-class App
-{
-public:
+class App {
+  public:
     App();
     ~App();
     /**
@@ -22,7 +21,8 @@ public:
      * Funkcja obsługująca zdarzenia czekające w kolejce.
      */
     void eventProces();
-private:
+
+  private:
     /**
      * Zmienna podtrzymująca działanie pętli głównej programu.
      */
@@ -30,11 +30,11 @@ private:
     /**
      * Aktualny stan aplikacji.
      */
-    AppState* m_app_state;
+    AppState *m_app_state;
     /**
      * Obiekt okna aplikacji.
      */
-    SDL_Window* m_window;
+    SDL_Window *m_window;
 };
 
 #endif // APP_H

@@ -1,18 +1,17 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "appstate.h"
 #include "../objects/player.h"
+#include "appstate.h"
 
-#include <vector>
 #include <string>
+#include <vector>
 /**
  * @brief
  * Klasa wyboru trybu gry: 1 gracz czy 2 graczy lub wyjścia. Klasa jest pierwszym stanem aplikacji, pojawia się zaraz po uruchomieniu programu i pozwala na przejście do stanu gry (klasa Game).
  */
-class Menu : public AppState
-{
-public:
+class Menu : public AppState {
+  public:
     Menu();
     ~Menu();
     /**
@@ -37,14 +36,14 @@ public:
      * @li Esc - wyjście z programu
      * @param ev -  wskaźnik na unię SDL_Event przechowującą typ i parametry różnych zdarzeń
      */
-    void eventProcess(SDL_Event* ev);
+    void eventProcess(SDL_Event *ev);
     /**
      * Pzejście do gry w wybranym trybie lub wyjście z aplikacji.
      * @return @a nullptr jeżli wybrano "Exit" lub wciśnięto Esc, w przeciwnym wypadku funkcja zwraca wskaźnik na Game
      */
-    AppState* nextState();
+    AppState *nextState();
 
-private:
+  private:
     /**
      * Kontener przechowujący wszystkie napisy jakie pojawiają się w menu.
      */
@@ -56,7 +55,7 @@ private:
     /**
      * Zmienna odpowiadająca za wskaźnik w postaci czołgu.
      */
-    Player* m_tank_pointer;
+    Player *m_tank_pointer;
     /**
      * Zmienna przechowuje informację, czy należy zakończyć bieżący stan gry i przejść do gry lub wyłączyć aplikację.
      */

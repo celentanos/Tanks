@@ -6,9 +6,8 @@
 /**
  * @brief Klasa zajmująca się ruchami wrogich czołgów.
  */
-class Enemy : public Tank
-{
-public:
+class Enemy : public Tank {
+  public:
     /**
      * Tworzenie przeciwnika w pierwszym z położeń wrogów.
      * @see AppConfig::enemy_starting_point
@@ -46,7 +45,7 @@ public:
      */
     SDL_Point target_position;
 
-private:
+  private:
     /**
      * Czas od ostatniej zmiany kierunku.
      */

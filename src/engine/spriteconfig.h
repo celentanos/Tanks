@@ -2,18 +2,35 @@
 #define SPRITECONFIG_H
 
 #include "../type.h"
-#include <map>
+
 #include <SDL2/SDL.h>
+#include <map>
 
 /**
  * @brief
  * Struktura przechowująca informacjie danym typie animacji obiektu.
  */
-struct SpriteData
-{
-    SpriteData() { rect.x = 0; rect.y = 0; rect.w = 0; rect.h = 0; frames_count = 0; frame_duration = 0; loop = false;}
+struct SpriteData {
+    SpriteData()
+    {
+        rect.x         = 0;
+        rect.y         = 0;
+        rect.w         = 0;
+        rect.h         = 0;
+        frames_count   = 0;
+        frame_duration = 0;
+        loop           = false;
+    }
     SpriteData(int x, int y, int w, int h, int fc, int fd, bool l)
-        { rect.x = x; rect.y = y; rect.w = w; rect.h = h; frames_count = fc; frame_duration = fd; loop = l;}
+    {
+        rect.x         = x;
+        rect.y         = y;
+        rect.w         = w;
+        rect.h         = h;
+        frames_count   = fc;
+        frame_duration = fd;
+        loop           = l;
+    }
 
     /**
      * Pozycja i wymiary pierwszej klatki animacji
@@ -37,9 +54,8 @@ struct SpriteData
  * @brief
  * Klasa przechowuje informacjie o wszystkich typach animacji w grze.
  */
-class SpriteConfig
-{
-public:
+class SpriteConfig {
+  public:
     /**
      * W konstruktorze wykonywane są dodawania kolejnych animacji funkcją @a SpriteConfig::insert.
      */
@@ -49,8 +65,9 @@ public:
      * @param sp - szukany typ animacji
      * @return animację danego typu
      */
-    const SpriteData* getSpriteData(SpriteType sp) const;
-private:
+    const SpriteData *getSpriteData(SpriteType sp) const;
+
+  private:
     /**
      * Kontener przechowujący wszystkie typy animacji.
      */
@@ -66,7 +83,7 @@ private:
      * @param fd - czas wyświetlania jednej klatki
      * @param l - zapętlenie animacji
      */
-    void insert(SpriteType st , int x, int y, int w, int h, int fc, int fd, bool l);
+    void insert(SpriteType st, int x, int y, int w, int h, int fc, int fd, bool l);
 };
 
 #endif // SPRITECONFIG_H

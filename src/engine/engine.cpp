@@ -1,9 +1,8 @@
 #include "engine.h"
 
-
 Engine::Engine()
 {
-    m_renderer = nullptr;
+    m_renderer      = nullptr;
     m_sprite_config = nullptr;
 }
 
@@ -15,23 +14,25 @@ Engine &Engine::getEngine()
 
 std::string Engine::intToString(int num)
 {
-    if(num == 0) return "0";
+    if (num == 0)
+        return "0";
 
     std::string buf;
-    bool negative = false;
-    if(num < 0)
-    {
+    bool        negative = false;
+    if (num < 0) {
         negative = true;
-        num = -num;
+        num      = -num;
     }
-    for(; num; num /= 10) buf = "0123456789abcdef"[num % 10] + buf;
-    if(negative) buf = "-" + buf;
+    for (; num; num /= 10)
+        buf = "0123456789abcdef"[num % 10] + buf;
+    if (negative)
+        buf = "-" + buf;
     return buf;
 }
 
 void Engine::initModules()
 {
-    m_renderer = new Renderer;
+    m_renderer      = new Renderer;
     m_sprite_config = new SpriteConfig;
 }
 
@@ -43,12 +44,6 @@ void Engine::destroyModules()
     m_sprite_config = nullptr;
 }
 
-Renderer *Engine::getRenderer() const
-{
-    return m_renderer;
-}
+Renderer *Engine::getRenderer() const { return m_renderer; }
 
-SpriteConfig *Engine::getSpriteConfig() const
-{
-    return m_sprite_config;
-}
+SpriteConfig *Engine::getSpriteConfig() const { return m_sprite_config; }

@@ -2,8 +2,9 @@
 #define APPCONFIG_H
 
 #include "objects/player.h"
-#include <iostream>
+
 #include <SDL2/SDL_rect.h>
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -11,9 +12,8 @@ using namespace std;
 /**
  * @brief Klasa zawierająca zbór parametrów aplikacji.
  */
-class AppConfig
-{
-public:
+class AppConfig {
+  public:
     /**
      * Ścieżka do tekstury obiektów.
      */
@@ -57,7 +57,7 @@ public:
     /**
      * Sterowanie czołgami graczy.
      */
-    static vector <Player::PlayerKeys> player_keys;
+    static vector<Player::PlayerKeys> player_keys;
     /**
      * Czas wyświetlanai numeru rundy przy jej rozpocząciu.
      */

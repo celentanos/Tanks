@@ -1,28 +1,29 @@
 #include "object.h"
+
 #include <SDL2/SDL.h>
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 
 Object::Object()
 {
-    pos_x = 0.0;
-    pos_y = 0.0;
-    type = ST_NONE;
-    to_erase = false;
-    m_sprite = nullptr;
+    pos_x                = 0.0;
+    pos_y                = 0.0;
+    type                 = ST_NONE;
+    to_erase             = false;
+    m_sprite             = nullptr;
     m_frame_display_time = 0;
-    m_current_frame = 0;
+    m_current_frame      = 0;
 }
 
 Object::Object(double x, double y, SpriteType type)
 {
-    pos_x = x;
-    pos_y = y;
-    this->type = type;
-    to_erase = false;
-    m_sprite = Engine::getEngine().getSpriteConfig()->getSpriteData(type);
+    pos_x                = x;
+    pos_y                = y;
+    this->type           = type;
+    to_erase             = false;
+    m_sprite             = Engine::getEngine().getSpriteConfig()->getSpriteData(type);
     m_frame_display_time = 0;
-    m_current_frame = 0;
+    m_current_frame      = 0;
 
     src_rect.x = m_sprite->rect.x;
     src_rect.y = m_sprite->rect.y;
@@ -42,13 +43,13 @@ Object::Object(double x, double y, SpriteType type)
 
 Object::Object(double x, double y, const SpriteData *sprite)
 {
-    pos_x = x;
-    pos_y = y;
-    this->type = type;
-    to_erase = false;
-    m_sprite = sprite;
+    pos_x                = x;
+    pos_y                = y;
+    this->type           = type;
+    to_erase             = false;
+    m_sprite             = sprite;
     m_frame_display_time = 0;
-    m_current_frame = 0;
+    m_current_frame      = 0;
 
     src_rect.x = m_sprite->rect.x;
     src_rect.y = m_sprite->rect.y;
@@ -66,19 +67,19 @@ Object::Object(double x, double y, const SpriteData *sprite)
     collision_rect.w = m_sprite->rect.w;
 }
 
-Object::~Object()
-{
-}
+Object::~Object() {}
 
 void Object::draw()
 {
-    if(m_sprite == nullptr || to_erase) return;
+    if (m_sprite == nullptr || to_erase)
+        return;
     Engine::getEngine().getRenderer()->drawObject(&src_rect, &dest_rect);
 }
 
 void Object::update(Uint32 dt)
 {
-    if(to_erase) return;
+    if (to_erase)
+        return;
 
     dest_rect.x = pos_x;
     dest_rect.y = pos_y;
@@ -90,17 +91,16 @@ void Object::update(Uint32 dt)
     collision_rect.h = m_sprite->rect.h;
     collision_rect.w = m_sprite->rect.w;
 
-    if(m_sprite->frames_count > 1)
-    {
+    if (m_sprite->frames_count > 1) {
         m_frame_display_time += dt;
-        if(m_frame_display_time > m_sprite->frame_duration)
-        {
+        if (m_frame_display_time > m_sprite->frame_duration) {
             m_frame_display_time = 0;
             m_current_frame++;
-            if(m_current_frame >= m_sprite->frames_count)
-            {
-                if(m_sprite->loop) m_current_frame = 0;
-                else m_current_frame = m_sprite->frames_count - 1;
+            if (m_current_frame >= m_sprite->frames_count) {
+                if (m_sprite->loop)
+                    m_current_frame = 0;
+                else
+                    m_current_frame = m_sprite->frames_count - 1;
             }
 
             src_rect = moveRect(m_sprite->rect, 0, m_current_frame);
@@ -111,14 +111,13 @@ void Object::update(Uint32 dt)
 SDL_Rect Object::moveRect(const SDL_Rect &rect, int x, int y)
 {
     SDL_Rect r;
-    r.x = rect.x + x*rect.w;
-    r.y = rect.y + y*rect.h;
+    r.x = rect.x + x * rect.w;
+    r.y = rect.y + y * rect.h;
     r.w = rect.w;
     r.h = rect.h;
 
     return r;
 }
-
 
 SDL_Rect intersectRect(SDL_Rect *rect1, SDL_Rect *rect2)
 {

@@ -6,9 +6,8 @@
 /**
  * @brief Klasa odpowiedzialna za pojedyńczy kawałek murku.
  */
-class Brick : public Object
-{
-public:
+class Brick : public Object {
+  public:
     /**
      * Tworzenie murku w położeniu (0, 0).
      */
@@ -30,7 +29,8 @@ public:
      * @param bullet_direction - kierunek ruchu pocisku
      */
     void bulletHit(Direction bullet_direction);
-private:
+
+  private:
     /**
      * Liczba trafień pucisków w murek.
      */

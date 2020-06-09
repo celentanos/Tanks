@@ -44,12 +44,6 @@ SpriteConfig::SpriteConfig()
     insert(ST_TANKS_LOGO, 0, 260, 406, 72, 1, 200, false);
 }
 
-const SpriteData* SpriteConfig::getSpriteData(SpriteType st) const
-{
-    return &m_configs.at(st);
-}
+const SpriteData *SpriteConfig::getSpriteData(SpriteType st) const { return &m_configs.at(st); }
 
-void SpriteConfig::insert(SpriteType st, int x, int y, int w, int h, int fc, int fd, bool l)
-{
-    m_configs[st] = SpriteData(x, y, w, h, fc, fd, l);
-}
+void SpriteConfig::insert(SpriteType st, int x, int y, int w, int h, int fc, int fd, bool l) { m_configs[st] = SpriteData(x, y, w, h, fc, fd, l); }

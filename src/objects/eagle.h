@@ -6,9 +6,8 @@
 /**
  * @brief Klasa orzełka, którego gracze mają bronić a przeciwnicy zniszczyć.
  */
-class Eagle : public Object
-{
-public:
+class Eagle : public Object {
+  public:
     /**
      * Tworzenie orzełka w położeniu (0, 0).
      */

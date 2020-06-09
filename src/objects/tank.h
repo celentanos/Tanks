@@ -1,9 +1,9 @@
 #ifndef TANK_H
 #define TANK_H
 
-#include "object.h"
-#include "bullet.h"
 #include "../type.h"
+#include "bullet.h"
+#include "object.h"
 
 #include <vector>
 
@@ -13,9 +13,8 @@ typedef unsigned TankStateFlags;
  * @brief
  * Klasa zajmująca się podstawową mechaniką czołgów: jazda, strzał.
  */
-class Tank : public Object
-{
-public:
+class Tank : public Object {
+  public:
     /**
      * Tworzenie czołgu w pierwszym z położeń wrogów.
      * @see AppConfig::enemy_starting_point
@@ -45,7 +44,7 @@ public:
      * Funkcja odpowiada za stworzenie pocisku jeżeli jeszcze nie stworzono maksymalnej ich ilości.
      * @return wskaźnik na utworzony pocisk, jeżeli nie stworzono pocisku zwraca @a nullptr
      */
-    virtual Bullet* fire();
+    virtual Bullet *fire();
     /**
      * Funkcja zwraca prostokąt kolizji jaki byłby w następnej klatce przy założeniu prędkości i kierunku takiej jaka jest obecnie.
      * @param dt - przewidywany czas wyliczania następnej klatki
@@ -106,13 +105,13 @@ public:
     /**
      * Kontener z wystrzelonymi pociskami czołgu.
      */
-    std::vector<Bullet*> bullets;
+    std::vector<Bullet *> bullets;
     /**
      * Liczba żyć gracza lub numer poziomu pancerza wrogiego czołgu.
      */
     int lives_count;
 
-protected:
+  protected:
     /**
      * Flagi jakie ma aktualnie czołg.
      */
@@ -133,11 +132,11 @@ protected:
     /**
      * Wskaźnik na osłonkę czołgu. Jeśli czołg nie ma osłonki zmienna ma wartośc nullptr;
      */
-    Object* m_shield;
+    Object *m_shield;
     /**
      * Wskaźnik na łódkę, którą może mieć czołg. Jeśli czołg nie ma łódki zmienna ma wartośc nullptr;
      */
-    Object* m_boat;
+    Object *m_boat;
     /**
      * Czas od zdobycia osłonki.
      */

@@ -1,18 +1,17 @@
 #ifndef SCORES_H
 #define SCORES_H
-#include "appstate.h"
 #include "../objects/player.h"
+#include "appstate.h"
 
-#include <vector>
 #include <string>
+#include <vector>
 
 /**
  * @brief
  * Klasa odpowada za wyświetlanie wyników graczy z poprzedniej rundy.
  */
-class Scores : public AppState
-{
-public:
+class Scores : public AppState {
+  public:
     Scores();
     /**
      * Konstruktor wywoływany przez Game po zakończeniu rozgrywki.
@@ -20,7 +19,7 @@ public:
      * @param level - numer ostatniego poziomu
      * @param game_over - zmianan mówiąca czy ostatni poziom został przegrany
      */
-    Scores(std::vector<Player*> players, int level, bool game_over);
+    Scores(std::vector<Player *> players, int level, bool game_over);
     /**
      * Funkcja zwraca @a true po określonym czasie wyświetlania ekranu punktów.
      * @return @a true lub @a false
@@ -39,18 +38,18 @@ public:
      * Funkcja odpowiada na wciśnięcie klawisza Enter, co kończy odliczanie punktów i przyspiesza przejście do następnego stanu.
      * @param ev - wskaźnik na unię SDL_Event przechowującą typ i parametry różnych zdarzeń
      */
-    void eventProcess(SDL_Event* ev);
+    void eventProcess(SDL_Event *ev);
     /**
      * Funkcja zwraca wskaźnik na obiekt będący następnym stanem aplikacji. Jeśli gracz przegrał następnym stanem jest @a Menu jeśli przeszedł rundę następnym stanem jest @a Game.
      * @return wskaźnik na następny stan
      */
-    AppState* nextState();
+    AppState *nextState();
 
-private:
+  private:
     /**
      * Kontener z wszystkimi graczami (zabitymi i niezabitymi).
      */
-    std::vector<Player*> m_players;
+    std::vector<Player *> m_players;
     /**
      * Numer ostatniego poziomu.
      */

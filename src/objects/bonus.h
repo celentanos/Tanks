@@ -6,9 +6,8 @@
 /**
  * @brief Klasa zajumująca wyświetlaniem bonusu.
  */
-class Bonus : public Object
-{
-public:
+class Bonus : public Object {
+  public:
     /**
      * Tworzenie domyślnego bonusu - gwiazdki w położeniu (0, 0).
      */
@@ -31,7 +30,8 @@ public:
      * @param dt - czas od ostatniego wywołania funkcji
      */
     void update(Uint32 dt);
-private:
+
+  private:
     /**
      * Czas od stworzenie bonusu.
      */
