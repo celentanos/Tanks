@@ -1,4 +1,4 @@
 *.o
-Tanks.pro.user.*
+*.user
 doc
 build
