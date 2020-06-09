@@ -1,0 +1,11 @@
+// the configured options and settings for oempControl
+#define APP_VER_MAJ         @APP_VER_MAJ@
+#define APP_VER_MIN         @APP_VER_MIN@
+#define APP_VER_PAT         @APP_VER_PAT@
+#define APP_BUILD_TYPE      "@APP_BUILD_TYPE@"
+#define APP_NAME            "@APP_NAME@"
+#define APP_NAME_PRINT      "@APP_NAME_PRINT@"
+#define APP_NAME_ORG        "@APP_NAME_ORG@"
+#define APP_NAME_ORG_PRINT  "@APP_NAME_ORG_PRINT@"
+#define APP_GIT_REVISION    "@APP_GIT_REVISION@"
+#define APP_GIT_COMMIT      "@APP_GIT_COMMIT@"
