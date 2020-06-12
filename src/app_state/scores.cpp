@@ -6,24 +6,17 @@
 #include "menu.h"
 
 Scores::Scores()
+    : m_game_over(true), //
+      m_score_counter_run(true)
 {
-    m_show_time         = 0;
-    m_level             = 0;
-    m_game_over         = true;
-    m_score_counter_run = true;
-    m_score_counter     = 0;
-    m_max_score         = 0;
 }
 
-Scores::Scores(std::vector<Player *> players, int level, bool game_over)
+Scores::Scores(const std::vector<Player *> &players, int level, bool game_over)
+    : m_players(players), //
+      m_level(level),
+      m_game_over(game_over),
+      m_score_counter_run(true)
 {
-    m_players           = players;
-    m_level             = level;
-    m_game_over         = game_over;
-    m_show_time         = 0;
-    m_score_counter_run = true;
-    m_score_counter     = 0;
-    m_max_score         = 0;
     for (auto player : m_players) {
         player->to_erase = false;
         if (player->lives_count == 0 && !game_over)

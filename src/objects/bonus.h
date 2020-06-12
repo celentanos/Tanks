@@ -35,11 +35,11 @@ class Bonus : public Object {
     /**
      * Czas od stworzenie bonusu.
      */
-    Uint32 m_bonus_show_time;
+    Uint32 m_bonus_show_time{};
     /**
      * Zmienna przechowująca informacje o tym czy bonus jest aktualnie wyświetlany; wykorzystywana do migania.
      */
-    bool m_show;
+    bool m_show{};
 };
 
 #endif // BONUS_H

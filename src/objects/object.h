@@ -42,31 +42,31 @@ class Object {
     /**
      * Zmienna mowi czy obiekt ma być usunięty. Jeżeli zmianan jest równa @a true to nie aktualizacja i rysowanie obiektu jest pomijane.
      */
-    bool to_erase;
+    bool to_erase{};
     /**
      * Prostokąt kolizji; może być mniejszy niż wymiary dest_rect.
      */
-    SDL_Rect collision_rect;
+    SDL_Rect collision_rect{};
     /**
      * Pozycja docelowa obiektu na ekranie.
      */
-    SDL_Rect dest_rect;
+    SDL_Rect dest_rect{};
     /**
      * Pozycja na teksturze aktualnie wyświetlanej klatki.
      */
-    SDL_Rect src_rect;
+    SDL_Rect src_rect{};
     /**
      * Typ obiektu.
      */
-    SpriteType type;
+    SpriteType type{};
     /**
      * Dokładna pozycja pozioma obiektu.
      */
-    double pos_x;
+    double pos_x{};
     /**
      * Dokładna pozycja pionowa obiektu.
      */
-    double pos_y;
+    double pos_y{};
 
   protected:
     /**
@@ -81,15 +81,15 @@ class Object {
     /**
      * Animacja odpowiadająca danemu typowi obiektu.
      */
-    const SpriteData *m_sprite;
+    const SpriteData *m_sprite{};
     /**
      * Czas wyświetlania obecnej klatki animacji.
      */
-    Uint32 m_frame_display_time;
+    Uint32 m_frame_display_time{};
     /**
      * Numer obecnej klatki animacji.
      */
-    int m_current_frame;
+    int m_current_frame{};
 };
 
 /**

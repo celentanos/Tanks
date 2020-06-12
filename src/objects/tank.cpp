@@ -4,28 +4,18 @@
 
 #include <algorithm>
 
-Tank::Tank() : Object(AppConfig::enemy_starting_point.at(0).x, AppConfig::enemy_starting_point.at(0).y, ST_TANK_A)
+Tank::Tank()
+    : Object(AppConfig::enemy_starting_point.at(0).x, AppConfig::enemy_starting_point.at(0).y, ST_TANK_A), //
+      default_speed(AppConfig::tank_default_speed),
+      direction(D_UP)
 {
-    direction     = D_UP;
-    m_slip_time   = 0;
-    default_speed = AppConfig::tank_default_speed;
-    speed         = 0.0;
-    m_shield      = nullptr;
-    m_boat        = nullptr;
-    m_shield_time = 0;
-    m_frozen_time = 0;
 }
 
-Tank::Tank(double x, double y, SpriteType type) : Object(x, y, type)
+Tank::Tank(double x, double y, SpriteType type)
+    : Object(x, y, type), //
+      default_speed(AppConfig::tank_default_speed),
+      direction(D_UP)
 {
-    direction     = D_UP;
-    m_slip_time   = 0;
-    default_speed = AppConfig::tank_default_speed;
-    speed         = 0.0;
-    m_shield      = nullptr;
-    m_boat        = nullptr;
-    m_shield_time = 0;
-    m_frozen_time = 0;
 }
 
 Tank::~Tank()

@@ -14,7 +14,7 @@
 
 #define VERSION "1.0.0"
 
-App::App() { m_window = nullptr; }
+App::App() {}
 
 App::~App()
 {
@@ -105,7 +105,6 @@ void App::eventProces()
                 event.window.event == SDL_WINDOWEVENT_MAXIMIZED || //
                 event.window.event == SDL_WINDOWEVENT_RESTORED ||  //
                 event.window.event == SDL_WINDOWEVENT_SHOWN) {
-
                 AppConfig::windows_rect.w = event.window.data1;
                 AppConfig::windows_rect.h = event.window.data2;
                 Engine::getEngine().getRenderer()->setScale((float)AppConfig::windows_rect.w / (AppConfig::map_rect.w + AppConfig::status_rect.w), //

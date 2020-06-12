@@ -34,11 +34,11 @@ class Brick : public Object {
     /**
      * Liczba trafień pucisków w murek.
      */
-    int m_collision_count;
+    int m_collision_count{};
     /**
      * Jeden z dziesięciu stanów w jakich może być murek.
      */
-    int m_state_code;
+    int m_state_code{};
 };
 
 #endif // BRICK_H

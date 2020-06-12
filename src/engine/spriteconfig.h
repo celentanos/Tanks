@@ -35,19 +35,19 @@ struct SpriteData {
     /**
      * Pozycja i wymiary pierwszej klatki animacji
      */
-    SDL_Rect rect;
+    SDL_Rect rect{};
     /**
      * Liczba klatek w animacji.
      */
-    int frames_count;
+    int frames_count{};
     /**
      * Czas wyświetlania jednej klatki milisekundach.
      */
-    unsigned frame_duration;
+    unsigned frame_duration{};
     /**
      * Zmienna określająca czy animacja jest zapętlona.
      */
-    bool loop;
+    bool loop{};
 };
 
 /**
@@ -71,7 +71,7 @@ class SpriteConfig {
     /**
      * Kontener przechowujący wszystkie typy animacji.
      */
-    std::map<SpriteType, SpriteData> m_configs;
+    std::map<SpriteType, SpriteData> m_configs{};
     /**
      * Funkcja używana przy dodawaniu nowego typu animacji.
      * @param st - typ animacji

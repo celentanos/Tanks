@@ -89,62 +89,62 @@ class Tank : public Object {
     /**
      * Domyślna prędkość danego czołgu. Może być różna dla różnych typów czołgów lub może być zmieniona po wzięcu bonusu przez gracza.
      */
-    double default_speed;
+    double default_speed{};
     /**
      * Aktualna prędkość czołgu.
      */
-    double speed;
+    double speed{};
     /**
      * Zmienna przechowuję informację czy czołg jest obecnie zatrzymany.
      */
-    bool stop;
+    bool stop{};
     /**
      * Zmeinna przechowuje aktualny kierunek jazdy czołgu.
      */
-    Direction direction;
+    Direction direction{};
     /**
      * Kontener z wystrzelonymi pociskami czołgu.
      */
-    std::vector<Bullet *> bullets;
+    std::vector<Bullet *> bullets{};
     /**
      * Liczba żyć gracza lub numer poziomu pancerza wrogiego czołgu.
      */
-    int lives_count;
+    int lives_count{};
 
   protected:
     /**
      * Flagi jakie ma aktualnie czołg.
      */
-    TankStateFlags m_flags;
+    TankStateFlags m_flags{};
     /**
      * Czas od wystąpienia poślizgu.
      */
-    Sint32 m_slip_time;
+    Sint32 m_slip_time{};
     /**
      * Odpowiada zwrotowi czołgu w poślizgu i może być różna od kierunku przemieszczania się czołgu na lodzie.
      */
-    Direction new_direction;
+    Direction new_direction{};
     /**
      * Maksymalna liczba pocisków jakie może wystrzelić czołg.
      */
-    unsigned m_bullet_max_size;
+    unsigned m_bullet_max_size{};
 
     /**
      * Wskaźnik na osłonkę czołgu. Jeśli czołg nie ma osłonki zmienna ma wartośc nullptr;
      */
-    Object *m_shield;
+    Object *m_shield{};
     /**
      * Wskaźnik na łódkę, którą może mieć czołg. Jeśli czołg nie ma łódki zmienna ma wartośc nullptr;
      */
-    Object *m_boat;
+    Object *m_boat{};
     /**
      * Czas od zdobycia osłonki.
      */
-    Uint32 m_shield_time;
+    Uint32 m_shield_time{};
     /**
      * Czas od zamrożenia czoałgu.
      */
-    Uint32 m_frozen_time;
+    Uint32 m_frozen_time{};
 };
 
 #endif // TANK_H

@@ -7,25 +7,17 @@
 
 Player::Player() : Tank(AppConfig::player_starting_point.at(0).x, AppConfig::player_starting_point.at(0).y, ST_PLAYER_1)
 {
-    speed             = 0;
     lives_count       = 11;
     m_bullet_max_size = AppConfig::player_bullet_max_size;
-    score             = 0;
-    star_count        = 0;
     m_shield          = new Object(0, 0, ST_SHIELD);
-    m_shield_time     = 0;
     respawn();
 }
 
 Player::Player(double x, double y, SpriteType type) : Tank(x, y, type)
 {
-    speed             = 0;
     lives_count       = 11;
     m_bullet_max_size = AppConfig::player_bullet_max_size;
-    score             = 0;
-    star_count        = 0;
     m_shield          = new Object(x, y, ST_SHIELD);
-    m_shield_time     = 0;
     respawn();
 }
 

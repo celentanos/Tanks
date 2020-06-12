@@ -1,10 +1,6 @@
 #include "engine.h"
 
-Engine::Engine()
-{
-    m_renderer      = nullptr;
-    m_sprite_config = nullptr;
-}
+Engine::Engine() {}
 
 Engine &Engine::getEngine()
 {

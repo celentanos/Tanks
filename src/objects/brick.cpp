@@ -2,17 +2,9 @@
 
 #include <iostream>
 
-Brick::Brick() : Object(0, 0, ST_BRICK_WALL)
-{
-    m_collision_count = 0;
-    m_state_code      = 0;
-}
+Brick::Brick() : Object(0, 0, ST_BRICK_WALL) {}
 
-Brick::Brick(double x, double y) : Object(x, y, ST_BRICK_WALL)
-{
-    m_collision_count = 0;
-    m_state_code      = 0;
-}
+Brick::Brick(double x, double y) : Object(x, y, ST_BRICK_WALL) {}
 
 void Brick::update(Uint32 dt)
 {

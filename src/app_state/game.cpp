@@ -13,55 +13,20 @@
 #include <iostream>
 #include <stdlib.h>
 
-Game::Game()
-{
-    m_level_columns_count    = 0;
-    m_level_rows_count       = 0;
-    m_current_level          = 0;
-    m_eagle                  = nullptr;
-    m_player_count           = 1;
-    m_enemy_redy_time        = 0;
-    m_pause                  = false;
-    m_level_end_time         = 0;
-    m_protect_eagle          = false;
-    m_protect_eagle_time     = 0;
-    m_enemy_respown_position = 0;
-    nextLevel();
-}
+Game::Game() : m_player_count(1) { nextLevel(); }
 
-Game::Game(int players_count)
-{
-    m_level_columns_count    = 0;
-    m_level_rows_count       = 0;
-    m_current_level          = 0;
-    m_eagle                  = nullptr;
-    m_player_count           = players_count;
-    m_pause                  = false;
-    m_level_end_time         = 0;
-    m_protect_eagle          = false;
-    m_protect_eagle_time     = 0;
-    m_enemy_respown_position = 0;
-    nextLevel();
-}
+Game::Game(int players_count) : m_player_count(players_count) { nextLevel(); }
 
-Game::Game(std::vector<Player *> players, int previous_level)
+Game::Game(const std::vector<Player *> &players, int previous_level)
+    : m_players(players), //
+      m_current_level(previous_level)
 {
-    m_level_columns_count = 0;
-    m_level_rows_count    = 0;
-    m_current_level       = previous_level;
-    m_eagle               = nullptr;
-    m_players             = players;
-    m_player_count        = m_players.size();
+    m_player_count = m_players.size();
     for (auto player : m_players) {
         player->clearFlag(TSF_MENU);
         player->lives_count++;
         player->respawn();
     }
-    m_pause                  = false;
-    m_level_end_time         = 0;
-    m_protect_eagle          = false;
-    m_protect_eagle_time     = 0;
-    m_enemy_respown_position = 0;
     nextLevel();
 }
 
@@ -69,8 +34,8 @@ Game::~Game() { clearLevel(); }
 
 void Game::draw()
 {
-    Engine &  engine   = Engine::getEngine();
-    Renderer *renderer = engine.getRenderer();
+    const Engine &engine   = Engine::getEngine();
+    Renderer *    renderer = engine.getRenderer();
     renderer->clear();
 
     if (m_level_start_screen) {
@@ -249,6 +214,7 @@ void Game::update(Uint32 dt)
                                            return false;
                                        }),
                         m_enemies.end());
+
         m_players.erase(std::remove_if(m_players.begin(),
                                        m_players.end(),
                                        [this](Player *p) {
@@ -259,6 +225,7 @@ void Game::update(Uint32 dt)
                                            return false;
                                        }),
                         m_players.end());
+
         m_bonuses.erase(std::remove_if(m_bonuses.begin(),
                                        m_bonuses.end(),
                                        [](Bonus *b) {
@@ -269,6 +236,7 @@ void Game::update(Uint32 dt)
                                            return false;
                                        }),
                         m_bonuses.end());
+
         m_bushes.erase(std::remove_if(m_bushes.begin(),
                                       m_bushes.end(),
                                       [](Object *b) {
@@ -696,11 +664,11 @@ void Game::checkCollisionBulletWithLevel(Bullet *bullet)
             }
         }
 
-    //========================kolizja z granicami mapy========================
+    //========================kolizja z granicami mapy==========================
     if (br->x < 0 || br->y < 0 || br->x + br->w > AppConfig::map_rect.w || br->y + br->h > AppConfig::map_rect.h) {
         bullet->destroy();
     }
-    //========================kolizja z orzełkiem========================
+    //========================kolizja z orzełkiem===============================
     if (m_eagle->type == ST_EAGLE && !m_game_over) {
         intersect_rect = intersectRect(&m_eagle->collision_rect, br);
         if (intersect_rect.w > 0 && intersect_rect.h > 0) {

@@ -2,16 +2,16 @@
 
 #include "../appconfig.h"
 
-Bonus::Bonus() : Object(0, 0, ST_BONUS_STAR)
+Bonus::Bonus()
+    : Object(0, 0, ST_BONUS_STAR), //
+      m_show(true)
 {
-    m_bonus_show_time = 0;
-    m_show            = true;
 }
 
-Bonus::Bonus(double x, double y, SpriteType type) : Object(x, y, type)
+Bonus::Bonus(double x, double y, SpriteType type)
+    : Object(x, y, type), //
+      m_show(true)
 {
-    m_bonus_show_time = 0;
-    m_show            = true;
 }
 
 void Bonus::draw()

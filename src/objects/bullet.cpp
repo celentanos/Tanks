@@ -2,20 +2,16 @@
 
 #include "../appconfig.h"
 
-Bullet::Bullet() : Object(0, 0, ST_BULLET)
+Bullet::Bullet()
+    : Object(0, 0, ST_BULLET), //
+      direction(D_UP)
 {
-    speed            = 0.0;
-    direction        = D_UP;
-    increased_damage = false;
-    collide          = false;
 }
 
-Bullet::Bullet(double x, double y) : Object(x, y, ST_BULLET)
+Bullet::Bullet(double x, double y)
+    : Object(x, y, ST_BULLET), //
+      direction(D_UP)
 {
-    speed            = 0.0;
-    direction        = D_UP;
-    increased_damage = false;
-    collide          = false;
 }
 
 void Bullet::update(Uint32 dt)

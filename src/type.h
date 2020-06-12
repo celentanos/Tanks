@@ -43,7 +43,7 @@ enum SpriteType {
 
     ST_TANKS_LOGO,
 
-    ST_NONE
+    ST_NONE,
 };
 
 enum TankStateFlag {
@@ -55,9 +55,14 @@ enum TankStateFlag {
     TSF_ON_ICE    = 1 << 6, // jeżeli czołg jest na lodzie to się ślizga
     TSF_CREATE    = 1 << 7, // tworzenie czołgu
     TSF_LIFE      = 1 << 8,
-    TSF_MENU      = 1 << 9 // dwukrotne przyspieszenie animacji
+    TSF_MENU      = 1 << 9, // dwukrotne przyspieszenie animacji
 };
 
-enum Direction { D_UP = 0, D_RIGHT = 1, D_DOWN = 2, D_LEFT = 3 };
+enum Direction {
+    D_UP    = 0,
+    D_RIGHT = 1,
+    D_DOWN  = 2,
+    D_LEFT  = 3,
+};
 
 #endif // TYPE_H

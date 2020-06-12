@@ -6,14 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-Renderer::Renderer()
-{
-    m_texture      = nullptr;
-    m_renderer     = nullptr;
-    m_text_texture = nullptr;
-    m_font1        = nullptr;
-    m_font2        = nullptr;
-}
+Renderer::Renderer() {}
 
 Renderer::~Renderer()
 {

@@ -33,7 +33,7 @@ class Game : public AppState {
      * @param players - kontener z graczami
      * @param previous_level - zmienna przechowująca numer poprzedniego poziomu
      */
-    Game(std::vector<Player *> players, int previous_level);
+    Game(const std::vector<Player *> &players, int previous_level);
 
     ~Game();
     /**
@@ -159,99 +159,99 @@ class Game : public AppState {
     /**
      * Liczaba kolumn siatki mapy.
      */
-    int m_level_columns_count;
+    int m_level_columns_count{};
     /**
      * Liczaba wierszy siatki mapy.
      */
-    int m_level_rows_count;
+    int m_level_rows_count{};
     /**
      * Przeszkody na mapie.
      */
-    std::vector<std::vector<Object *>> m_level;
+    std::vector<std::vector<Object *>> m_level{};
     /**
      * Krzaki na mapie.
      */
-    std::vector<Object *> m_bushes;
+    std::vector<Object *> m_bushes{};
 
     /**
      * Zbiór wrogów.
      */
-    std::vector<Enemy *> m_enemies;
+    std::vector<Enemy *> m_enemies{};
     /**
      * Zbiór pozostałych graczy.
      */
-    std::vector<Player *> m_players;
+    std::vector<Player *> m_players{};
     /**
      * Zbiór zabity graczy.
      */
-    std::vector<Player *> m_killed_players;
+    std::vector<Player *> m_killed_players{};
     /**
      * Zbiór bonusów na mapie.
      */
-    std::vector<Bonus *> m_bonuses;
+    std::vector<Bonus *> m_bonuses{};
     /**
      * Obiekt orzełka.
      */
-    Eagle *m_eagle;
+    Eagle *m_eagle{};
 
     /**
      * Obecny numer poziomu.
      */
-    int m_current_level;
+    int m_current_level{};
     /**
      * Liczba graczy w wybranym trybie gry 1 lub 2.
      */
-    int m_player_count;
+    int m_player_count{};
     /**
      * Liczba pozostałych wrogów do zabicia na danym poziomie
      */
-    int m_enemy_to_kill;
+    int m_enemy_to_kill{};
 
     /**
      * Zmienna przechowyje, czy w tym momencie wyświetlany jest ekran startowy poziomu.
      */
-    bool m_level_start_screen;
+    bool m_level_start_screen{};
     /**
      * Zmienna przechowuje informacje, czy orzełek jest chroniony kamiennym murem.
      */
-    bool m_protect_eagle;
+    bool m_protect_eagle{};
     /**
      * Czas jak długo wyświetlany jest już ekran startowy poziomu.
      */
-    Uint32 m_level_start_time;
+    Uint32 m_level_start_time{};
     /**
      * Czas od ostatniego stworzenia przeciwnika.
      */
-    Uint32 m_enemy_redy_time;
+    Uint32 m_enemy_redy_time{};
     /**
      * Czas jaki minął od wygrania mapy.
      */
-    Uint32 m_level_end_time;
+    Uint32 m_level_end_time{};
     /**
      * Czas jak długo orzełek jest już chroniony przez kamienny mur.
      */
-    Uint32 m_protect_eagle_time;
+    Uint32 m_protect_eagle_time{};
 
     /**
      * Stan przegranej.
      */
-    bool m_game_over;
+    bool m_game_over{};
     /**
      * Pozycja napisu "GAME OVER" jeśli @a m_game_over jest równe @a true.
      */
-    double m_game_over_position;
+    double m_game_over_position{};
     /**
      * Zmienna przechowuje informację, czy należy zakończyć bieżący stan gry i przejść do wyświetlania wyników lub manu gry.
      */
-    bool m_finished;
+    bool m_finished{};
     /**
      * Zmienna mówi czy włączona została pauza.
      */
-    bool m_pause;
+    bool m_pause{};
     /**
      * Numer pozycji now stworzonego przeciwnika. Zmieniana przy każdym tworzeniu przeciwnika.
      */
-    int m_enemy_respown_position;
+    int m_enemy_respown_position{};
 };
 
 #endif // GAME_H

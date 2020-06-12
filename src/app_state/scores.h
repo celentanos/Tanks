@@ -19,7 +19,7 @@ class Scores : public AppState {
      * @param level - numer ostatniego poziomu
      * @param game_over - zmianan mówiąca czy ostatni poziom został przegrany
      */
-    Scores(std::vector<Player *> players, int level, bool game_over);
+    Scores(const std::vector<Player *> &players, int level, bool game_over);
     /**
      * Funkcja zwraca @a true po określonym czasie wyświetlania ekranu punktów.
      * @return @a true lub @a false
@@ -49,31 +49,31 @@ class Scores : public AppState {
     /**
      * Kontener z wszystkimi graczami (zabitymi i niezabitymi).
      */
-    std::vector<Player *> m_players;
+    std::vector<Player *> m_players{};
     /**
      * Numer ostatniego poziomu.
      */
-    int m_level;
+    int m_level{};
     /**
      * Zmianna przechowuje czy ostatnie poziom był przegrany.
      */
-    bool m_game_over;
+    bool m_game_over{};
     /**
      * Aktualna wartości licznika punktów.
      */
-    unsigned m_score_counter;
+    unsigned m_score_counter{};
     /**
      * Zmianna mówiąca czy licznik punktów jest włączony.
      */
-    bool m_score_counter_run;
+    bool m_score_counter_run{};
     /**
      * Wynik do jakiego dąży licznik punktów.
      */
-    unsigned m_max_score;
+    unsigned m_max_score{};
     /**
      * Czas od zakończenia zliczania punktów w milisekundach.
      */
-    Uint32 m_show_time;
+    Uint32 m_show_time{};
 };
 
 #endif // SCORES_H

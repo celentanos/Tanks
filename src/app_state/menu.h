@@ -47,19 +47,19 @@ class Menu : public AppState {
     /**
      * Kontener przechowujący wszystkie napisy jakie pojawiają się w menu.
      */
-    std::vector<std::string> m_menu_texts;
+    std::vector<std::string> m_menu_texts{};
     /**
      * Indeks wybranej pozycji menu.
      */
-    int m_menu_index;
+    int m_menu_index{};
     /**
      * Zmienna odpowiadająca za wskaźnik w postaci czołgu.
      */
-    Player *m_tank_pointer;
+    Player *m_tank_pointer{};
     /**
      * Zmienna przechowuje informację, czy należy zakończyć bieżący stan gry i przejść do gry lub wyłączyć aplikację.
      */
-    bool m_finished;
+    bool m_finished{};
 };
 
 #endif // MENU_H

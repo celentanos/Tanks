@@ -26,15 +26,15 @@ class App {
     /**
      * Zmienna podtrzymująca działanie pętli głównej programu.
      */
-    bool is_running;
+    bool is_running{};
     /**
      * Aktualny stan aplikacji.
      */
-    AppState *m_app_state;
+    AppState *m_app_state{};
     /**
      * Obiekt okna aplikacji.
      */
-    SDL_Window *m_window;
+    SDL_Window *m_window{};
 };
 
 #endif // APP_H

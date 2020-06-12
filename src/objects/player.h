@@ -17,23 +17,23 @@ class Player : public Tank {
         /**
          * Klawisz odpowiadający jeździe w górę.
          */
-        SDL_Scancode up;
+        SDL_Scancode up{};
         /**
          * Klawisz odpowiadający jeździe w dół.
          */
-        SDL_Scancode down;
+        SDL_Scancode down{};
         /**
          * Klawisz odpowiadający jeździe w lewo.
          */
-        SDL_Scancode left;
+        SDL_Scancode left{};
         /**
          * Klawisz odpowiadający jeździe w prawo.
          */
-        SDL_Scancode right;
+        SDL_Scancode right{};
         /**
          * Klawisz odpowiadający wystrzałowi pocisku.
          */
-        SDL_Scancode fire;
+        SDL_Scancode fire{};
     };
 
     /**
@@ -79,21 +79,21 @@ class Player : public Tank {
     /**
      * Klawiszcze sterujące ruchami aktualngo gracza.
      */
-    PlayerKeys player_keys;
+    PlayerKeys player_keys{};
     /**
      * Aktualnie posiadane punkty przez gracza.
      */
-    unsigned score;
+    unsigned score{};
 
   private:
     /**
      * Aktualnie posiadana liczba gwiazdek; może się zawierać w przedziale [0, 3].
      */
-    int star_count;
+    int star_count{};
     /**
      * Czas jaki minął od ostatnego wystrzału pocisku.
      */
-    Uint32 m_fire_time;
+    Uint32 m_fire_time{};
 };
 
 #endif // PLAYER_H

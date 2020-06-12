@@ -4,26 +4,14 @@
 #include <algorithm>
 #include <iostream>
 
-Object::Object()
-{
-    pos_x                = 0.0;
-    pos_y                = 0.0;
-    type                 = ST_NONE;
-    to_erase             = false;
-    m_sprite             = nullptr;
-    m_frame_display_time = 0;
-    m_current_frame      = 0;
-}
+Object::Object() : type(ST_NONE) {}
 
 Object::Object(double x, double y, SpriteType type)
+    : type(type), //
+      pos_x(x),
+      pos_y(y)
 {
-    pos_x                = x;
-    pos_y                = y;
-    this->type           = type;
-    to_erase             = false;
-    m_sprite             = Engine::getEngine().getSpriteConfig()->getSpriteData(type);
-    m_frame_display_time = 0;
-    m_current_frame      = 0;
+    m_sprite = Engine::getEngine().getSpriteConfig()->getSpriteData(type);
 
     src_rect.x = m_sprite->rect.x;
     src_rect.y = m_sprite->rect.y;
@@ -42,15 +30,10 @@ Object::Object(double x, double y, SpriteType type)
 }
 
 Object::Object(double x, double y, const SpriteData *sprite)
+    : pos_x(x), //
+      pos_y(y),
+      m_sprite(sprite)
 {
-    pos_x                = x;
-    pos_y                = y;
-    this->type           = type;
-    to_erase             = false;
-    m_sprite             = sprite;
-    m_frame_display_time = 0;
-    m_current_frame      = 0;
-
     src_rect.x = m_sprite->rect.x;
     src_rect.y = m_sprite->rect.y;
     src_rect.h = m_sprite->rect.h;

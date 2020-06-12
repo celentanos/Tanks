@@ -63,27 +63,27 @@ class Renderer {
     /**
      * Wskaźnik na obiekt związany z buforem okna.
      */
-    SDL_Renderer *m_renderer;
+    SDL_Renderer *m_renderer{};
     /**
      * Wskaźnik na teksturę zawierającą wszystkie widoczne elementy gry.
      */
-    SDL_Texture *m_texture;
+    SDL_Texture *m_texture{};
     /**
      * Wskaźnik na teksturę pomocniczą przy rysowaniu tekstu na ekranie.
      */
-    SDL_Texture *m_text_texture;
+    SDL_Texture *m_text_texture{};
     /**
      * Czcionka o rozmiarze 28.
      */
-    TTF_Font *m_font1;
+    TTF_Font *m_font1{};
     /**
      * Czcionka o rozmiarze 14.
      */
-    TTF_Font *m_font2;
+    TTF_Font *m_font2{};
     /**
      * Czcionka o rozmiarze 10.
      */
-    TTF_Font *m_font3;
+    TTF_Font *m_font3{};
 };
 
 #endif // RENDERER_H

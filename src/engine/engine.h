@@ -40,8 +40,8 @@ class Engine {
     SpriteConfig *getSpriteConfig() const;
 
   private:
-    Renderer *    m_renderer;
-    SpriteConfig *m_sprite_config;
+    Renderer *    m_renderer{};
+    SpriteConfig *m_sprite_config{};
 };
 
 #endif // ENGINE_H

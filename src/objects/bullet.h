@@ -32,20 +32,20 @@ class Bullet : public Object {
     /**
      * Prędkość poruszania się pocisku.
      */
-    double speed;
+    double speed{};
     /**
      * Zmienna przechowuje informację czy pocisk się z czymś zderzył.
      */
-    bool collide;
+    bool collide{};
     /**
      * Zmienna przechowuje informację czy pocisk ma zwiększone obrażenia.
      * Zwiększone obrażenia pozwalają niszczyć kamienny mur oraz krzaki.
      */
-    bool increased_damage;
+    bool increased_damage{};
     /**
      * Kierunek przemieszczania się pocisku.
      */
-    Direction direction;
+    Direction direction{};
 };
 
 #endif // BULLET_H

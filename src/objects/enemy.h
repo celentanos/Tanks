@@ -43,35 +43,35 @@ class Enemy : public Tank {
     /**
      * Pozycja do jakiej kieruje się czołg przeciwnika.
      */
-    SDL_Point target_position;
+    SDL_Point target_position{};
 
   private:
     /**
      * Czas od ostatniej zmiany kierunku.
      */
-    Uint32 m_direction_time;
+    Uint32 m_direction_time{};
     /**
      * Czas jazdy w danym kirunku. Czas po jakim nastąpi zmiana kierunku.
      */
-    Uint32 m_keep_direction_time;
+    Uint32 m_keep_direction_time{};
 
     /**
      * Czas od ostatniej próby wznowienia jazdy
      */
-    Uint32 m_speed_time;
+    Uint32 m_speed_time{};
     /**
      * Czas po jakim nastąpi kolejne wznowienie jazdy; ustawienie niezerowej prędkości.
      */
-    Uint32 m_try_to_go_time;
+    Uint32 m_try_to_go_time{};
 
     /**
      * Czas od ostatniej próby wystrzału pocisku.
      */
-    Uint32 m_fire_time;
+    Uint32 m_fire_time{};
     /**
      * Czas po jakim nastąpi próba kolejnego wystrzału.
      */
-    Uint32 m_reload_time;
+    Uint32 m_reload_time{};
 };
 
 #endif // ENEMY_H
