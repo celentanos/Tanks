@@ -1,4 +1,4 @@
 *.o
-*.user
+*.user*
 doc
 build
