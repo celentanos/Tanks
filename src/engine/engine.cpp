@@ -28,18 +28,10 @@ std::string Engine::intToString(int num)
 
 void Engine::initModules()
 {
-    m_renderer      = new Renderer;
-    m_sprite_config = new SpriteConfig;
+    m_renderer      = std::make_unique<Renderer>();
+    m_sprite_config = std::make_unique<SpriteConfig>();
 }
 
-void Engine::destroyModules()
-{
-    delete m_renderer;
-    m_renderer = nullptr;
-    delete m_sprite_config;
-    m_sprite_config = nullptr;
-}
+Renderer *Engine::getRenderer() const { return m_renderer.get(); }
 
-Renderer *Engine::getRenderer() const { return m_renderer; }
-
-SpriteConfig *Engine::getSpriteConfig() const { return m_sprite_config; }
+SpriteConfig *Engine::getSpriteConfig() const { return m_sprite_config.get(); }

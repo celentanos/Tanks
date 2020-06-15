@@ -132,11 +132,11 @@ class Tank : public Object {
     /**
      * Wskaźnik na osłonkę czołgu. Jeśli czołg nie ma osłonki zmienna ma wartośc nullptr;
      */
-    Object *m_shield{};
+    std::unique_ptr<Object> m_shield{};
     /**
      * Wskaźnik na łódkę, którą może mieć czołg. Jeśli czołg nie ma łódki zmienna ma wartośc nullptr;
      */
-    Object *m_boat{};
+    std::unique_ptr<Object> m_boat{};
     /**
      * Czas od zdobycia osłonki.
      */

@@ -4,6 +4,7 @@
 #include "../objects/player.h"
 #include "appstate.h"
 
+#include <memory>
 #include <string>
 #include <vector>
 /**
@@ -13,7 +14,6 @@
 class Menu : public AppState {
   public:
     Menu();
-    ~Menu();
     /**
      * Funkcja sprawdzająca czy należy zakończyć stan menu i przejści do kolejnego stanu gry.
      * @return @a true jeżeli została wybrana, któraś z opcji menu lub został wciśnięty kalwisz Esc, @a false w przeciwnym wypadku
@@ -55,7 +55,7 @@ class Menu : public AppState {
     /**
      * Zmienna odpowiadająca za wskaźnik w postaci czołgu.
      */
-    Player *m_tank_pointer{};
+    std::unique_ptr<Player> m_tank_pointer{};
     /**
      * Zmienna przechowuje informację, czy należy zakończyć bieżący stan gry i przejść do gry lub wyłączyć aplikację.
      */

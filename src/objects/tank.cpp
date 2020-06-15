@@ -24,14 +24,8 @@ Tank::~Tank()
         delete bullet;
     bullets.clear();
 
-    if (m_shield != nullptr) {
-        delete m_shield;
-        m_shield = nullptr;
-    }
-    if (m_boat != nullptr) {
-        delete m_boat;
-        m_boat = nullptr;
-    }
+    if (!m_boat)
+        m_boat.reset(nullptr);
 }
 
 void Tank::draw()
@@ -300,13 +294,13 @@ void Tank::setFlag(TankStateFlag flag)
         new_direction = direction;
 
     if (flag == TSF_SHIELD) {
-        if (m_shield == nullptr)
-            m_shield = new Object(pos_x, pos_y, ST_SHIELD);
+        if (m_shield)
+            m_shield = std::make_unique<Object>(pos_x, pos_y, ST_SHIELD);
         m_shield_time = 0;
     }
     if (flag == TSF_BOAT) {
         if (m_boat == nullptr)
-            m_boat = new Object(pos_x, pos_y, type == ST_PLAYER_1 ? ST_BOAT_P1 : ST_BOAT_P2);
+            m_boat = std::make_unique<Object>(pos_x, pos_y, type == ST_PLAYER_1 ? ST_BOAT_P1 : ST_BOAT_P2);
     }
     if (flag == TSF_FROZEN) {
         m_frozen_time = 0;
@@ -317,15 +311,13 @@ void Tank::setFlag(TankStateFlag flag)
 void Tank::clearFlag(TankStateFlag flag)
 {
     if (flag == TSF_SHIELD) {
-        if (m_shield != nullptr)
-            delete m_shield;
-        m_shield      = nullptr;
+        if (!m_shield)
+            m_shield.reset(nullptr);
         m_shield_time = 0;
     }
     if (flag == TSF_BOAT) {
-        if (m_boat != nullptr)
-            delete m_boat;
-        m_boat = nullptr;
+        if (!m_boat)
+            m_boat.reset(nullptr);
     }
     if (flag == TSF_FROZEN) {
         m_frozen_time = 0;

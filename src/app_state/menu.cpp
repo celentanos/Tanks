@@ -13,7 +13,7 @@ Menu::Menu()
     m_menu_texts.push_back("1 Player");
     m_menu_texts.push_back("2 Players");
     m_menu_texts.push_back("Exit");
-    m_tank_pointer            = new Player(0, 0, ST_PLAYER_1);
+    m_tank_pointer            = std::make_unique<Player>(0, 0, ST_PLAYER_1);
     m_tank_pointer->direction = D_RIGHT;
     m_tank_pointer->pos_x     = 144;
     m_tank_pointer->pos_y     = (m_menu_index + 1) * 32 + 112;
@@ -23,8 +23,6 @@ Menu::Menu()
     m_tank_pointer->clearFlag(TSF_SHIELD);
     m_tank_pointer->setFlag(TSF_MENU);
 }
-
-Menu::~Menu() { delete m_tank_pointer; }
 
 void Menu::draw()
 {

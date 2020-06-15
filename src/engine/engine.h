@@ -4,6 +4,8 @@
 #include "renderer.h"
 #include "spriteconfig.h"
 
+#include <memory>
+
 /**
  * @brief Klasa łączy elementy związane z działaniem programu.
  */
@@ -25,10 +27,6 @@ class Engine {
      * Funkcja tworzy obiekty składowe silnika.
      */
     void initModules();
-    /**
-     * Funkcja niszczy obiekty składowe silnika.
-     */
-    void destroyModules();
 
     /**
      * @return wskaźnik na obiekt Renderer pozwalający rysować na ekranie
@@ -40,8 +38,8 @@ class Engine {
     SpriteConfig *getSpriteConfig() const;
 
   private:
-    Renderer *    m_renderer{};
-    SpriteConfig *m_sprite_config{};
+    std::unique_ptr<Renderer>     m_renderer{};
+    std::unique_ptr<SpriteConfig> m_sprite_config{};
 };
 
 #endif // ENGINE_H

@@ -16,19 +16,18 @@
 
 App::App() {}
 
-App::~App()
-{
-    if (m_app_state != nullptr)
-        delete m_app_state;
-}
-
 void App::run()
 {
     is_running = true;
     // inicjalizacja SDL i utworzenie okan
 
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-        m_window = SDL_CreateWindow("TANKS", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, AppConfig::windows_rect.w, AppConfig::windows_rect.h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+        m_window = SDL_CreateWindow("TANKS", //
+                                    SDL_WINDOWPOS_CENTERED,
+                                    SDL_WINDOWPOS_CENTERED,
+                                    AppConfig::windows_rect.w,
+                                    AppConfig::windows_rect.h,
+                                    SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
         if (m_window == nullptr)
             return;
@@ -45,7 +44,7 @@ void App::run()
         engine.getRenderer()->loadTexture(m_window);
         engine.getRenderer()->loadFont();
 
-        m_app_state = new Menu;
+        m_app_state = std::make_unique<Menu>();
 
         double FPS;
         Uint32 time1, time2, dt, fps_time = 0, fps_count = 0, delay = 15;
@@ -56,9 +55,8 @@ void App::run()
             time1 = time2;
 
             if (m_app_state->finished()) {
-                AppState *new_state = m_app_state->nextState();
-                delete m_app_state;
-                m_app_state = new_state;
+                auto new_state = std::unique_ptr<AppState>(m_app_state->nextState());
+                m_app_state.swap(new_state);
             }
             if (m_app_state == nullptr)
                 break;
@@ -83,8 +81,6 @@ void App::run()
                 fps_count = 0;
             }
         }
-
-        engine.destroyModules();
     }
 
     SDL_DestroyWindow(m_window);
