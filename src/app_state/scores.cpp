@@ -106,12 +106,9 @@ void Scores::eventProcess(SDL_Event *ev)
 
 bool Scores::finished() const { return m_show_time > AppConfig::score_show_time; }
 
-AppState *Scores::nextState()
+AppStatePtr Scores::nextState()
 {
-    if (m_game_over) {
-        Menu *m = new Menu;
-        return m;
-    }
-    Game *g = new Game(m_players, m_level);
-    return g;
+    if (m_game_over)
+        return std::make_shared<Menu>();
+    return std::make_shared<Game>(m_players, m_level);
 }

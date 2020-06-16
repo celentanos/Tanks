@@ -41,7 +41,7 @@ class Menu : public AppState {
      * Pzejście do gry w wybranym trybie lub wyjście z aplikacji.
      * @return @a nullptr jeżli wybrano "Exit" lub wciśnięto Esc, w przeciwnym wypadku funkcja zwraca wskaźnik na Game
      */
-    AppState *nextState();
+    AppStatePtr nextState();
 
   private:
     /**

@@ -83,16 +83,14 @@ void Menu::eventProcess(SDL_Event *ev)
 
 bool Menu::finished() const { return m_finished; }
 
-AppState *Menu::nextState()
+AppStatePtr Menu::nextState()
 {
     if (m_menu_index == m_menu_texts.size() - 1)
         return nullptr;
-    else if (m_menu_index == 0) {
-        Game *g = new Game(1);
-        return g;
-    } else if (m_menu_index == 1) {
-        Game *g = new Game(2);
-        return g;
-    }
-    return nullptr;
+    else if (m_menu_index == 0)
+        return std::make_shared<Game>(1);
+    else if (m_menu_index == 1)
+        return std::make_shared<Game>(2);
+
+    return {};
 }

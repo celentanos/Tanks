@@ -31,7 +31,7 @@ class App {
     /**
      * Aktualny stan aplikacji.
      */
-    std::unique_ptr<AppState> m_app_state{};
+    AppStatePtr m_app_state{};
     /**
      * Obiekt okna aplikacji.
      */

@@ -67,7 +67,7 @@ class Game : public AppState {
      * Przejście do następnyego stanu.
      * @return wskaźnik na obiekty klasy @a Scores jeżeli gracz przeszedł rundę lub przegrał. Jeżeli gracz wcisną Esc funkcja zwraca wskaźnik na obiekt @a Menu.
      */
-    AppState *nextState();
+    AppStatePtr nextState();
 
   private:
     /**

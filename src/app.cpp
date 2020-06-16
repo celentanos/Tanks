@@ -54,11 +54,9 @@ void App::run()
             dt    = time2 - time1;
             time1 = time2;
 
-            if (m_app_state->finished()) {
-                auto new_state = std::unique_ptr<AppState>(m_app_state->nextState());
-                m_app_state.swap(new_state);
-            }
-            if (m_app_state == nullptr)
+            if (m_app_state->finished())
+                m_app_state = m_app_state->nextState();
+            if (!m_app_state)
                 break;
 
             eventProces();
@@ -81,6 +79,7 @@ void App::run()
                 fps_count = 0;
             }
         }
+        engine.destroyModules();
     }
 
     SDL_DestroyWindow(m_window);

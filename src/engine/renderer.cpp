@@ -10,17 +10,17 @@ Renderer::Renderer() {}
 
 Renderer::~Renderer()
 {
-    if (m_renderer != nullptr)
+    if (m_renderer)
         SDL_DestroyRenderer(m_renderer);
-    if (m_texture != nullptr)
+    if (m_texture)
         SDL_DestroyTexture(m_texture);
-    if (m_text_texture != nullptr)
+    if (m_text_texture)
         SDL_DestroyTexture(m_text_texture);
-    if (m_font1 != nullptr)
+    if (m_font1)
         TTF_CloseFont(m_font1);
-    if (m_font2 != nullptr)
+    if (m_font2)
         TTF_CloseFont(m_font2);
-    if (m_font3 != nullptr)
+    if (m_font3)
         TTF_CloseFont(m_font3);
 }
 

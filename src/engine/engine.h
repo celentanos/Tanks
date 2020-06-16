@@ -27,7 +27,10 @@ class Engine {
      * Funkcja tworzy obiekty składowe silnika.
      */
     void initModules();
-
+    /**
+     * Funkcja niszczy obiekty składowe silnika.
+     */
+    void destroyModules();
     /**
      * @return wskaźnik na obiekt Renderer pozwalający rysować na ekranie
      */

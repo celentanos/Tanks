@@ -2,6 +2,7 @@
 #define APPSTATE_H
 
 #include <SDL2/SDL_events.h>
+#include <memory>
 #include <string>
 
 /**
@@ -35,6 +36,9 @@ class AppState {
      * Funkcja zwracającya następny stan po zakończeniu obecnego. Funkcję należy wywołać tylko wtedy, gdy funkcja @a finished zwróci wartość @a true.
      * @return następny stan gry
      */
-    virtual AppState *nextState() = 0;
+    virtual std::shared_ptr<AppState> nextState() = 0;
 };
+
+using AppStatePtr = std::shared_ptr<AppState>;
+
 #endif // APPSTATE_H

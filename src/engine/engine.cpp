@@ -32,6 +32,12 @@ void Engine::initModules()
     m_sprite_config = std::make_unique<SpriteConfig>();
 }
 
+void Engine::destroyModules()
+{
+    m_renderer.reset(nullptr);
+    m_sprite_config.reset(nullptr);
+}
+
 Renderer *Engine::getRenderer() const { return m_renderer.get(); }
 
 SpriteConfig *Engine::getSpriteConfig() const { return m_sprite_config.get(); }

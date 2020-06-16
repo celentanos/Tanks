@@ -250,7 +250,8 @@ void Game::update(Uint32 dt)
 
         // dodanie nowego przeciwnika
         m_enemy_redy_time += dt;
-        if (m_enemies.size() < (AppConfig::enemy_max_count_on_map < m_enemy_to_kill ? AppConfig::enemy_max_count_on_map : m_enemy_to_kill) && m_enemy_redy_time > AppConfig::enemy_redy_time) {
+        if (m_enemies.size() < (AppConfig::enemy_max_count_on_map < m_enemy_to_kill ? AppConfig::enemy_max_count_on_map : m_enemy_to_kill) //
+            && m_enemy_redy_time > AppConfig::enemy_redy_time) {
             m_enemy_redy_time = 0;
             generateEnemy();
         }
@@ -411,7 +412,7 @@ void Game::loadLevel(std::string path)
 
 bool Game::finished() const { return m_finished; }
 
-AppState *Game::nextState()
+AppStatePtr Game::nextState()
 {
     if (m_game_over || m_enemy_to_kill <= 0) {
         m_players.erase(std::remove_if(m_players.begin(),
@@ -421,11 +422,10 @@ AppState *Game::nextState()
                                            return true;
                                        }),
                         m_players.end());
-        Scores *scores = new Scores(m_killed_players, m_current_level, m_game_over);
-        return scores;
+
+        return std::make_shared<Scores>(m_killed_players, m_current_level, m_game_over);
     }
-    Menu *m = new Menu;
-    return m;
+    return std::make_shared<Menu>();
 }
 
 void Game::clearLevel()
