@@ -93,14 +93,14 @@ include_directories(/usr/include)
 
 set(SOURCES
     src/app.cpp
-    src/appconfig.cpp
-    src/main.cpp
     src/app_state/game.cpp
     src/app_state/menu.cpp
     src/app_state/scores.cpp
+    src/appconfig.cpp
     src/engine/engine.cpp
     src/engine/renderer.cpp
     src/engine/spriteconfig.cpp
+    src/main.cpp
     src/objects/bonus.cpp
     src/objects/brick.cpp
     src/objects/bullet.cpp
@@ -110,6 +110,13 @@ set(SOURCES
     src/objects/player.cpp
     src/objects/tank.cpp
 )
+
+set(RESOURCE_FILES
+    resources/font/prstartk.ttf
+    resources/levels
+    resources/png/texture.png
+)
+file(COPY ${RESOURCE_FILES} DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
 # configure file ===============================================================
 configure_file (
