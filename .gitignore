@@ -2,3 +2,4 @@
 *.user*
 doc
 build
+*.kdev4
