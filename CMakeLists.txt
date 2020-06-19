@@ -18,8 +18,6 @@ cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-link_directories("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}") # for qwt linking
-
 # project flags ================================================================
 set(project_name "tanks")
 
@@ -63,8 +61,6 @@ execute_process (
 string(REPLACE "\n" "" app_git_commit "${app_git_commit}")
 set(APP_GIT_COMMIT "${app_git_commit}")
 
-find_package(SDL2 REQUIRED)
-
 # messages =====================================================================
 get_property(link_dirs DIRECTORY PROPERTY LINK_DIRECTORIES)
 message("=====================================================================")
@@ -86,10 +82,37 @@ message(CMAKE_C_COMPILER: "${CMAKE_C_COMPILER}")
 message(CMAKE_CXX_COMPILER: "${CMAKE_CXX_COMPILER}")
 message("=====================================================================")
 
+# SDL2 =========================================================================
+if(UNIX)
+    find_package(SDL2 REQUIRED)
+elseif(WIN32)
+    set(sdl2_dir "resources/SDL2-2.0.12/i686-w64-mingw32")
+    set(sdl2_ttf_dir "resources/SDL2_ttf-2.0.15/i686-w64-mingw32")
+    set(sdl2_image_dir "resources/SDL2_image-2.0.5/i686-w64-mingw32")
+
+    link_directories("${sdl2_dir}/bin" "${sdl2_ttf_dir}/bin" "${sdl2_image_dir}/bin") # Add directories in which the linker will look for libraries.
+
+    file(GLOB lib_files 
+        "${sdl2_dir}/bin/*.dll"
+        "${sdl2_ttf_dir}/bin/*.dll"
+        "${sdl2_image_dir}/bin/*.dll"
+    )
+    file(COPY ${lib_files} DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+    
+    include_directories("${sdl2_dir}/include")
+    include_directories("${sdl2_dir}/include/SDL2")
+    include_directories("${sdl2_ttf_dir}/include")
+    include_directories("${sdl2_image_dir}/include")
+endif()
+
 # include directories ==========================================================
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories(src)
-include_directories(/usr/include)
+
+get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${dirs})
+  message(STATUS "dir='${dir}'")
+endforeach() 
 
 set(SOURCES
     src/app.cpp
@@ -110,6 +133,14 @@ set(SOURCES
     src/objects/player.cpp
     src/objects/tank.cpp
 )
+
+# resources ====================================================================
+set(resource_files 
+    resources/font/prstartk.ttf
+    resources/levels
+    resources/png/texture.png
+)
+file(COPY ${resource_files} DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
 # configure file ===============================================================
 configure_file (
