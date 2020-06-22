@@ -1,7 +1,8 @@
 #ifndef SCORES_H
 #define SCORES_H
-#include "../objects/player.h"
+
 #include "appstate.h"
+#include "objects/player.h"
 
 #include <string>
 #include <vector>

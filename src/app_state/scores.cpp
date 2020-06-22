@@ -1,9 +1,9 @@
 #include "scores.h"
 
-#include "../appconfig.h"
-#include "../engine/engine.h"
-#include "game.h"
-#include "menu.h"
+#include "app_state/game.h"
+#include "app_state/menu.h"
+#include "appconfig.h"
+#include "engine/engine.h"
 
 Scores::Scores()
     : m_game_over(true), //

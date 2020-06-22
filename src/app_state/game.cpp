@@ -1,9 +1,9 @@
 #include "game.h"
 
-#include "../appconfig.h"
-#include "../engine/engine.h"
-#include "menu.h"
-#include "scores.h"
+#include "app_state/menu.h"
+#include "app_state/scores.h"
+#include "appconfig.h"
+#include "engine/engine.h"
 
 #include <SDL2/SDL.h>
 #include <algorithm>

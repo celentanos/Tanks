@@ -1,6 +1,6 @@
 #include "bonus.h"
 
-#include "../appconfig.h"
+#include "appconfig.h"
 
 Bonus::Bonus()
     : Object(0, 0, ST_BONUS_STAR), //

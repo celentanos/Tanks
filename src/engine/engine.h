@@ -1,8 +1,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include "renderer.h"
-#include "spriteconfig.h"
+#include "engine/renderer.h"
+#include "engine/spriteconfig.h"
 
 #include <memory>
 

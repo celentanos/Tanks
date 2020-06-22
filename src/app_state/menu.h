@@ -1,8 +1,8 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "../objects/player.h"
-#include "appstate.h"
+#include "app_state/appstate.h"
+#include "objects/player.h"
 
 #include <memory>
 #include <string>

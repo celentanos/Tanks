@@ -1,9 +1,9 @@
 #ifndef TANK_H
 #define TANK_H
 
-#include "../type.h"
-#include "bullet.h"
-#include "object.h"
+#include "objects/bullet.h"
+#include "objects/object.h"
+#include "type.h"
 
 #include <vector>
 

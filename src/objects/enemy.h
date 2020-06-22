@@ -1,7 +1,7 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "tank.h"
+#include "objects/tank.h"
 
 /**
  * @brief Klasa zajmująca się ruchami wrogich czołgów.

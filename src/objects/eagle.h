@@ -1,7 +1,7 @@
 #ifndef EAGLE_H
 #define EAGLE_H
 
-#include "object.h"
+#include "objects/object.h"
 
 /**
  * @brief Klasa orzełka, którego gracze mają bronić a przeciwnicy zniszczyć.

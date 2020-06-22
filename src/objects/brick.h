@@ -1,7 +1,7 @@
 #ifndef BRICK_H
 #define BRICK_H
 
-#include "object.h"
+#include "objects/object.h"
 
 /**
  * @brief Klasa odpowiedzialna za pojedyńczy kawałek murku.
